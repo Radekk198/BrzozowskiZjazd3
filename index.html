@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strona - Zjazd 3</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body onload="toggleForm()">
+    <div class="container">
+        <header id="header">
+            <h1>Serwis & Sklep internetowy - Zjazd 3</h1>
+        </header>
+
+        <nav>
+            <ul>
+                <li><a href="#">Strona główna</a></li>
+                <li><a href="#">Produkty</a></li>
+                <li><a href="#">Kontakt</a></li>
+            </ul>
+        </nav>
+
+        <div class="box box1">
+            <p>Witaj na stronie, gdzie naprawisz swój sprzęt oraz zakupisz używane lub nowe komponenty do
+                twojego komputera</p>
+        </div>
+
+        <div class="box box2">
+            <h2 id="countdown"></h2>
+            <script>
+                var now = new Date();
+                var tomorrow = new Date(now);
+                tomorrow.setDate(now.getDate() + 1);
+                tomorrow.setHours(0, 0, 0, 0);
+                var timeDifference = tomorrow - now;
+                var seconds = Math.floor((timeDifference / 1000) % 60);
+                var minutes = Math.floor((timeDifference / 1000 / 60) % 60);
+                var hours = Math.floor((timeDifference / 1000 / 60 / 60) % 24);
+
+                var countdownElement = document.getElementById('countdown');
+                var countdownInterval = setInterval(function () {
+                    countdownElement.textContent = 'Czas do końca promocji: ' + hours + 'h ' + minutes + 'm ' + seconds + 's';
+                    timeDifference -= 1000;
+                    seconds = Math.floor((timeDifference / 1000) % 60);
+                    minutes = Math.floor((timeDifference / 1000 / 60) % 60);
+                    hours = Math.floor((timeDifference / 1000 / 60 / 60) % 24);
+
+                    if (timeDifference <= 0) {
+                        clearInterval(countdownInterval);
+                        countdownElement.textContent = 'Czas minął!';
+                    }
+                }, 1000);
+            </script>
+            <h3>Tylko dzisiaj promocja -20% na wszystkie zamówienia!!</h3>
+        </div>
+
+        <div class="box box3">
+            <img src="https://www.makerstations.io/content/images/size/w1384/2022/12/tim-benniks-desk-setup-01.jpg"
+                alt="Stanowisko komputerowe" class="responsive">
+        </div>
+
+        <div class="box box4">
+            <img src="https://www.makerstations.io/content/images/2021/04/kevin-ng-developer-setup-01-1.jpeg"
+                alt="Stanowisko komputerowe" class="responsive">
+        </div>
+
+        <main>
+            <div class="box box5">
+                <button onclick="toggleForm()">Pokaż/ukryj formularz zgłoszenia</button>
+                <div id="zgloszenieForm" class="zgloszenie">
+                    <form>
+                        <h2 class="h2-size">Zgłoś swój sprzęt</h2>
+                        <label for="name">Imię:</label>
+                        <input type="text" id="name" name="name" required>
+
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <label for="message">Wiadomość:</label>
+                        <textarea id="message" name="message" required></textarea>
+
+                        <button type="submit">Wyślij</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+
+    </div>
+
+    <script>
+        function toggleForm() {
+            var form = document.getElementById('zgloszenieForm');
+            form.style.display = form.style.display === 'none' ? 'block' : 'none';
+        }
+    </script>
+
+</body>
+
+<div class="footer">
+    <p>&copy; 2023 Serwis Internetowy</p>
+</div>
+
+</html>
